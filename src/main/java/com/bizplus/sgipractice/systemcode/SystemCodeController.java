@@ -2,6 +2,7 @@ package com.bizplus.sgipractice.systemcode;
 
 import com.bizplus.sgipractice.global.util.NavigationUtil;
 import com.bizplus.sgipractice.systemcode.dto.ResponseDto;
+import com.bizplus.sgipractice.systemcode.dto.SystemCodeDetailRequest;
 import com.bizplus.sgipractice.systemcode.dto.SystemCodeDetailResponse;
 import com.bizplus.sgipractice.systemcode.dto.SystemCodeResponseDto;
 import com.bizplus.sgipractice.systemcode.entity.SystemCode;
@@ -12,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.swing.text.html.CSS;
@@ -53,5 +56,19 @@ public class SystemCodeController {
     /**
      * SystemCodeDetail 생성
      * */
+    @GetMapping("/create")
+    public String createForm(Model model) {
+        model.addAttribute("request", new SystemCodeDetailRequest());
+        SystemCodeResponseDto systemCodeResponseDto = systemCodeService.systemCodeList();
+        List<SystemCode> systemCodes = systemCodeResponseDto.getSystemCodes();
+        model.addAttribute("systemCodes", systemCodes);
+        return "systemCode/popupSystemCodeDetailForm";
+    }
+
+    @PostMapping("/create")
+    public String create(@ModelAttribute SystemCodeDetailRequest request) {
+        systemCodeService.createSystemCodeDetail(request);
+        return "redirect:/systemCode/list";
+    }
 
 }

@@ -9,9 +9,19 @@
             <th:block th:include="../static/layout/content-header.html"/>
 
             <div class="box box-bg">
-                <div class="ft-bold">
-                    Total : [[${responseDto.total}]]건
+                <div class="flex-content-between mb-1">
+                    <div class="ft-bold">
+                        Total : [[${responseDto.total}]]건
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-primary popup" href="/systemCode/create">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                            등록하기
+                        </button>
+                    </div>
+
                 </div>
+
                 <table class="table-list full" style="text-align: center">
                     <colgroup>
                         <col width="*">
