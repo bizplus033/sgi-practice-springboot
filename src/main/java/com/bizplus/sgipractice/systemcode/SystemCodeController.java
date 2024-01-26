@@ -3,6 +3,7 @@ package com.bizplus.sgipractice.systemcode;
 import com.bizplus.sgipractice.global.util.NavigationUtil;
 import com.bizplus.sgipractice.systemcode.dto.ResponseDto;
 import com.bizplus.sgipractice.systemcode.dto.SystemCodeDetailResponse;
+import com.bizplus.sgipractice.systemcode.dto.SystemCodeResponseDto;
 import com.bizplus.sgipractice.systemcode.entity.SystemCode;
 import com.bizplus.sgipractice.systemcode.service.SystemCodeService;
 import lombok.RequiredArgsConstructor;
@@ -30,9 +31,9 @@ public class SystemCodeController {
     @GetMapping("/codeList")
     public String codeList(Model model) {
         navigationList = NavigationUtil.setNavigation("기초정보관리", "시스템코드");
-        List<SystemCode> systemCodes = systemCodeService.systemCodeList();
+        SystemCodeResponseDto systemCodeResponseDto = systemCodeService.systemCodeList();
         model.addAttribute("navigation", navigationList);
-        model.addAttribute("systemCodeCodeList", systemCodes);
+        model.addAttribute("systemCodeResponseDto", systemCodeResponseDto);
         return "systemCode/systemCodeList";
     }
     /**

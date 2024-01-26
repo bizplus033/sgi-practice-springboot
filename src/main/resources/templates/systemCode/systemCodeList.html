@@ -9,7 +9,7 @@
             <th:block th:include="../static/layout/content-header.html"/>
             <div class="box box-bg">
                 <div class="ft-bold">
-                    Total : ?건
+                    Total : [[${systemCodeResponseDto.count}]]건
                 </div>
                 <table class="table-list full" style="text-align: center">
                     <colgroup>
@@ -21,7 +21,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="systemCode : ${systemCodeCodeList}">
+                    <tr th:each="systemCode : ${systemCodeResponseDto.systemCodes}">
                         <td>[[${systemCode.codeName}]]</td>
                     </tr>
                     </tbody>
