@@ -27,4 +27,13 @@ public class DslSystemCodeDetailRepository {
                 .innerJoin(systemCodeDetail.systemCode, systemCode)
                 .fetch();
     }
+
+    public Long totalCountSystemCodeDetail() {
+        Long total = query.select(systemCodeDetail.count())
+                .from(systemCodeDetail)
+                .fetchOne();
+
+        if (total == null) total = 0L;
+        return total;
+    }
 }

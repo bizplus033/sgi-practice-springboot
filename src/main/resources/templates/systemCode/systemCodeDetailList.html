@@ -10,7 +10,7 @@
 
             <div class="box box-bg">
                 <div class="ft-bold">
-                    Total : ?건
+                    Total : [[${responseDto.total}]]건
                 </div>
                 <table class="table-list full" style="text-align: center">
                     <colgroup>
@@ -24,7 +24,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="systemCodeDetail : ${systemCodeDetailList}">
+                    <tr th:each="systemCodeDetail : ${responseDto.systemCodeDetailResponses}">
                         <td>[[${systemCodeDetail.systemCodeDetailName}]]</td>
                         <td>[[${systemCodeDetail.systemCodeName}]]</td>
                     </tr>

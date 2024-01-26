@@ -1,6 +1,7 @@
 package com.bizplus.sgipractice.systemcode;
 
 import com.bizplus.sgipractice.global.util.NavigationUtil;
+import com.bizplus.sgipractice.systemcode.dto.ResponseDto;
 import com.bizplus.sgipractice.systemcode.dto.SystemCodeDetailResponse;
 import com.bizplus.sgipractice.systemcode.entity.SystemCode;
 import com.bizplus.sgipractice.systemcode.service.SystemCodeService;
@@ -40,9 +41,9 @@ public class SystemCodeController {
     @GetMapping("/list")
     public String list(Model model) {
         navigationList = NavigationUtil.setNavigation("기초정보관리", "공통자료관리");
-        List<SystemCodeDetailResponse> systemCodeDetailResponses = systemCodeService.systemCodeDetailList();
+        ResponseDto responseDto = systemCodeService.systemCodeDetailList();
         model.addAttribute("navigation", navigationList);
-        model.addAttribute("systemCodeDetailList", systemCodeDetailResponses);
+        model.addAttribute("responseDto", responseDto);
         return "systemCode/systemCodeDetailList";
     }
 

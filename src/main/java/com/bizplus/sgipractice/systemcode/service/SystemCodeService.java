@@ -1,5 +1,6 @@
 package com.bizplus.sgipractice.systemcode.service;
 
+import com.bizplus.sgipractice.systemcode.dto.ResponseDto;
 import com.bizplus.sgipractice.systemcode.dto.SystemCodeDetailResponse;
 import com.bizplus.sgipractice.systemcode.entity.SystemCode;
 import com.bizplus.sgipractice.systemcode.repository.DslSystemCodeDetailRepository;
@@ -21,7 +22,10 @@ public class SystemCodeService {
         return systemCodeRepository.findAll();
     }
 
-    public List<SystemCodeDetailResponse> systemCodeDetailList() {
-        return dslSystemCodeDetailRepository.findSystemCodeDetailWithSystemCode();
+    public ResponseDto systemCodeDetailList() {
+        List<SystemCodeDetailResponse> systemCodeDetailResponses
+                = dslSystemCodeDetailRepository.findSystemCodeDetailWithSystemCode();
+        Long totalCount = dslSystemCodeDetailRepository.totalCountSystemCodeDetail();
+        return new ResponseDto(systemCodeDetailResponses, totalCount);
     }
 }
