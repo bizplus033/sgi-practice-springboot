@@ -17,7 +17,7 @@ public class SystemCodeDetail extends BaseTimeEntity {
 
     private String name;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "system_code_id")
     private SystemCode systemCode;
 
