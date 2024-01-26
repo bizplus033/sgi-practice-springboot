@@ -1,5 +1,6 @@
 package com.bizplus.sgipractice.systemcode;
 
+import com.bizplus.sgipractice.systemcode.dto.SystemCodeDetailResponse;
 import com.bizplus.sgipractice.systemcode.entity.SystemCode;
 import com.bizplus.sgipractice.systemcode.service.SystemCodeService;
 import lombok.RequiredArgsConstructor;
@@ -36,9 +37,10 @@ public class SystemCodeController {
      * 공통자료관리
      * */
     @GetMapping("/list")
-    public String list() {
-        // todo
-        return null;
+    public String list(Model model) {
+        List<SystemCodeDetailResponse> systemCodeDetailResponses = systemCodeService.systemCodeDetailList();
+        model.addAttribute("systemCodeDetailList", systemCodeDetailResponses);
+        return "systemCode/systemCodeDetailList";
     }
 
 }
