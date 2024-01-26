@@ -1,0 +1,28 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="../static/layout/top.html">
+</head>
+<body>
+<div class="wrapper">
+    <th:block th:include="../static/layout/sidebar.html" th:with="active=${activeValue}"/>
+    <div class="container">
+        <div id="content">
+            <th:block th:include="../static/layout/content-header.html"/>
+            <table class="table-list full" style="text-align: center">
+                <colgroup>
+                    <col width="*">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>시스템 코드명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="systemCode : ${systemCodeCodeList}">
+                        <td>[[${systemCode.codeName}]]</td>
+                    </tr>
+                </tbody>
+        </div>
+    </div>
+</div>
+</body>
+</html>
