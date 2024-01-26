@@ -50,4 +50,8 @@ public class SystemCodeController {
         return "systemCode/systemCodeDetailList";
     }
 
+    /**
+     * SystemCodeDetail 생성
+     * */
+
 }
