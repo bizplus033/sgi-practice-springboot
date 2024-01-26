@@ -1,5 +1,6 @@
 package com.bizplus.sgipractice.systemcode;
 
+import com.bizplus.sgipractice.global.util.NavigationUtil;
 import com.bizplus.sgipractice.systemcode.dto.SystemCodeDetailResponse;
 import com.bizplus.sgipractice.systemcode.entity.SystemCode;
 import com.bizplus.sgipractice.systemcode.service.SystemCodeService;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.swing.text.html.CSS;
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -19,17 +21,16 @@ import java.util.List;
 @RequestMapping("/systemCode")
 @RequiredArgsConstructor
 public class SystemCodeController {
-    // <a th:href="@{/systemCode/codeList}" class="sidebar-link"
-    //                   th:classappend="${active eq 'systemCodeCodeList' ? 'active' : ''}">시스템코드</a>
-    //                <a th:href="@{/SystemCode/list}" class="sidebar-link"
-    //                   th:classappend="${active == 'systemCodeList' ? 'active' : ''}">공통자료관리</a>
+    private List<String> navigationList = new ArrayList<>();
     private final SystemCodeService systemCodeService;
     /**
      * 시스템 코드
      * */
     @GetMapping("/codeList")
     public String codeList(Model model) {
+        navigationList = NavigationUtil.setNavigation("기초정보관리", "시스템코드");
         List<SystemCode> systemCodes = systemCodeService.systemCodeList();
+        model.addAttribute("navigation", navigationList);
         model.addAttribute("systemCodeCodeList", systemCodes);
         return "systemCode/systemCodeList";
     }
@@ -38,7 +39,9 @@ public class SystemCodeController {
      * */
     @GetMapping("/list")
     public String list(Model model) {
+        navigationList = NavigationUtil.setNavigation("기초정보관리", "공통자료관리");
         List<SystemCodeDetailResponse> systemCodeDetailResponses = systemCodeService.systemCodeDetailList();
+        model.addAttribute("navigation", navigationList);
         model.addAttribute("systemCodeDetailList", systemCodeDetailResponses);
         return "systemCode/systemCodeDetailList";
     }

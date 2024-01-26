@@ -7,20 +7,26 @@
     <div class="container">
         <div id="content">
             <th:block th:include="../static/layout/content-header.html"/>
-            <table class="table-list full" style="text-align: center">
-                <colgroup>
-                    <col width="*">
-                </colgroup>
-                <thead>
+            <div class="box box-bg">
+                <div class="ft-bold">
+                    Total : ?건
+                </div>
+                <table class="table-list full" style="text-align: center">
+                    <colgroup>
+                        <col width="*">
+                    </colgroup>
+                    <thead>
                     <tr>
                         <th>시스템 코드명</th>
                     </tr>
-                </thead>
-                <tbody>
+                    </thead>
+                    <tbody>
                     <tr th:each="systemCode : ${systemCodeCodeList}">
                         <td>[[${systemCode.codeName}]]</td>
                     </tr>
-                </tbody>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
