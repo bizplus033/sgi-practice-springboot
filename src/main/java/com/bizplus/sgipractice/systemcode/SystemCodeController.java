@@ -34,6 +34,7 @@ public class SystemCodeController {
         SystemCodeResponseDto systemCodeResponseDto = systemCodeService.systemCodeList();
         model.addAttribute("navigation", navigationList);
         model.addAttribute("systemCodeResponseDto", systemCodeResponseDto);
+        model.addAttribute("activeValue", "systemCodeList");
         return "systemCode/systemCodeList";
     }
     /**
@@ -45,6 +46,7 @@ public class SystemCodeController {
         ResponseDto responseDto = systemCodeService.systemCodeDetailList();
         model.addAttribute("navigation", navigationList);
         model.addAttribute("responseDto", responseDto);
+        model.addAttribute("activeValue", "systemCodeDetailList");
         return "systemCode/systemCodeDetailList";
     }
 

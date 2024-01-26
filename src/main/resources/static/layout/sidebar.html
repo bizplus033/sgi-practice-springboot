@@ -1,6 +1,6 @@
 <div class="sidebar">
     <div class="brand">
-        <a href="/" class="logo">진워터</a>
+        <a href="/" class="logo">에스지아이(짭)</a>
     </div>
     <div class="logout">
         <a href="/logout" class="btn-xs">로그아웃</a>
@@ -10,9 +10,9 @@
             <label class="sidebar-label">기초정보관리 ▼</label>
             <nav class="sidebar-subItem">
                 <a th:href="@{/systemCode/codeList}" class="sidebar-link"
-                   th:classappend="${active eq 'systemCodeCodeList' ? 'active' : ''}">시스템코드</a>
+                   th:classappend="${active eq 'systemCodeList' ? 'active' : ''}">시스템코드</a>
                 <a th:href="@{/systemCode/list}" class="sidebar-link"
-                   th:classappend="${active == 'systemCodeList' ? 'active' : ''}">공통자료관리</a>
+                   th:classappend="${active == 'systemCodeDetailList' ? 'active' : ''}">공통자료관리</a>
             </nav>
         </li>
         <li class="sidebar-item">
