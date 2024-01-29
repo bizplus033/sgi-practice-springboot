@@ -1,4 +1,4 @@
-package com.bizplus.sgipractice.systemcode;
+package com.bizplus.sgipractice.systemcode.controller;
 
 import com.bizplus.sgipractice.global.util.NavigationUtil;
 import com.bizplus.sgipractice.systemcode.dto.ResponseDto;
@@ -68,7 +68,7 @@ public class SystemCodeController {
     @PostMapping("/create")
     public String create(@ModelAttribute SystemCodeDetailRequest request) {
         systemCodeService.createSystemCodeDetail(request);
-        return "redirect:/systemCode/list";
+        return "redirect:/popup-close";
     }
 
 }
