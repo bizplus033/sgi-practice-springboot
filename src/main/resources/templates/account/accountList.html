@@ -1,0 +1,57 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="../static/layout/top.html">
+</head>
+<body>
+<div class="wrapper">
+    <th:block th:include="../static/layout/sidebar.html" th:with="active=${accountList}"/>
+    <div class="container">
+        <div id="content">
+            <th:block th:include="../static/layout/content-header.html"/>
+
+            <div class="box box-bg">
+                <th:block th:include="/account/accountFilterForm.html"/>
+
+                <table class="table-list full" style="text-align: center">
+                    <colgroup>
+                        <col width="50px">
+                        <col width="180px">
+                        <col width="300px">
+                        <col width="300px">
+                        <col width="300px">
+                        <col width="300px">
+                        <col width="*">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th><input type="checkbox" name="checked_all"/></th>
+                        <th>거래처코드</th>
+                        <th>거래처명</th>
+                        <th>유형</th>
+                        <th>사업자번호</th>
+                        <th>대표자</th>
+                        <th>비고</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <th:block th:if="${accountList != null}">
+                        <tr th:each="account : ${accountList.accountResponses}">
+                            <td class="txt-center">
+                                <input class="deleteSelected" type="checkbox" name="idx[]" th:value="${account.id}"/>
+                            </td>
+                            <td>
+                                <a th:href="@{/account/edit(id=${account.id})}">[[${account.code}]]</a>
+                            </td>
+                            <td>[[${account.name}]]</td>
+                            <td>[[${account.type}]]</td>
+                            <td>[[${account.businessNumber}]]</td>
+                            <td>[[${account.ceo}]]</td>
+                            <td>[[${account.etc}]]</td>
+                        </tr>
+                    </th:block>
+                    </tbody>
+                </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

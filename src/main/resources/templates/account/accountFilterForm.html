@@ -1,0 +1,55 @@
+<form method="GET" action="/account/list" th:object="${searchFormDto}">
+    <table class="table-input">
+        <colgroup>
+            <col width="10%">
+            <col width="22%">
+            <col width="10%">
+            <col width="22%">
+            <col width="10%">
+            <col width="*">
+        </colgroup>
+
+        <tbody>
+        <tr>
+            <th>유형</th>
+            <td>
+                <select name="type" class="form-control xs" th:field="*{type}">
+                    <option th:selected="${type == ''}" value="">전체</option>
+                    <option th:selected="${type == '매입거래처'}" value="매입거래처">매입거래처</option>
+                    <option th:selected="${type == '매출거래처'}" value="매출거래처">매출거래처</option>
+                    <option th:selected="${type == '매입/매출거래처'}" value="매입/매출거래처">매입/매출거래처</option>
+                </select>
+            </td>
+            <th>거래처코드</th>
+            <td><input type="text" name="code" class="form-control xs" th:value="${code}" th:field="*{code}"></td>
+            <th>거래처명</th>
+            <td><input type="text" name="name" class="form-control xs" th:value="${name}" th:field="*{name}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="mt-1 mb-1 txt-right">
+        <button type="submit" class="btn">
+            <i class="fa fa-search" aria-hidden="true">검색하기</i>
+        </button>
+    </div>
+
+    <div class="flex-content-between mb-1">
+        <div class="ft-bold">
+            Total : [[${accountList.totalCount}]] 건
+        </div>
+        <div>
+            <button type="button" id="btnCreateAccount" class="btn btn-primary"
+                    th:onclick="@{|location.href='/account/create'|}">
+                <i class="fa fa-pencil" aria-hidden="true"> 등록하기</i>
+            </button>
+            <button type="button" id="btnDeleteAccount" class="btn btn-danger">
+                <i class="fa fa-trash-o" aria-hidden="true"> 삭제하기</i>
+            </button>
+            <button type="button" class="btn btn-success"
+                    th:onclick="|location.href='/accountExcel'|">
+                <i class="fa fa-file-excel-o" aria-hidden="true"> Excel 다운로드</i>
+            </button>
+        </div>
+    </div>
+</form>

@@ -19,15 +19,6 @@ import java.util.List;
 @RequestMapping("/account")
 @RequiredArgsConstructor
 public class AccountController {
-    // <li class="sidebar-item">
-    //            <label class="sidebar-label">거래처관리 ▼</label>
-    //            <nav class="sidebar-subItem">
-    //                <a th:href="@{/account/list}" class="sidebar-link"
-    //                   th:classappend="${active eq 'accountList' ? 'active' : ''}">거래처 정보</a>
-    //                <a th:href="@{/account/accountManagerList}" class="sidebar-link"
-    //                   th:classappend="${active == 'accountManagerList' ? 'active' : ''}">거래처 담당자 관리</a>
-    //            </nav>
-    //        </li>
     private List<String> navigationList = new ArrayList<>();
     private final AccountService accountService;
 
