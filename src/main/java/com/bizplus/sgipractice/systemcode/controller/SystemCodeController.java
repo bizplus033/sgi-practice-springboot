@@ -68,13 +68,7 @@ public class SystemCodeController {
     @PostMapping("/create")
     public String create(@ModelAttribute SystemCodeDetailRequest request) {
         systemCodeService.createSystemCodeDetail(request);
-        return "redirect:/systemCode/popup";
+        return "redirect:/popup-close";
     }
 
-    @GetMapping("/popup")
-    public String popup() {
-        
-        // 해당 팝업 기능은 공통 기능이니 CommonController 클래스로 이동
-        return "../static/script/popup-close";
-    }
 }
