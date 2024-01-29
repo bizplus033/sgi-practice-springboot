@@ -65,7 +65,7 @@ public class DslAccountRepository {
     public Long totalCountAccount() {
         return query
                 .select(account.count())
-                .from()
+                .from(account)
                 .fetchOne();
     }
 }

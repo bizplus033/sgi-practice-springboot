@@ -39,6 +39,14 @@ class DslAccountRepositoryTest {
         assertThat(accountBySearch2.get(0).getName()).isEqualTo("준몰드");
     }
 
+    @Test
+    void totalCountAccount_test() throws Exception {
+        // given
+        // when
+        Long count = dslAccountRepository.totalCountAccount();
 
+        // then
+        assertThat(count).isEqualTo(19);
+    }
 
 }
