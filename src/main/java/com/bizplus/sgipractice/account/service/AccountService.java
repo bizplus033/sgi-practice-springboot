@@ -26,7 +26,7 @@ public class AccountService {
     public AccountWithTotalCountResponse getAccountList(AccountSearchFormDto search) {
         List<AccountResponse> accountResponses
                 = dslAccountRepository.findAccountBySearch(search.getType(), search.getCode(), search.getName());
-        Long totalCount = dslAccountRepository.totalCountAccount();
+        Long totalCount = dslAccountRepository.totalCountAccount(search.getType(), search.getCode(), search.getName());
         return new AccountWithTotalCountResponse(accountResponses, totalCount);
     }
 

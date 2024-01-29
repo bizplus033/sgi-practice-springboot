@@ -43,7 +43,7 @@ class DslAccountRepositoryTest {
     void totalCountAccount_test() throws Exception {
         // given
         // when
-        Long count = dslAccountRepository.totalCountAccount();
+        Long count = dslAccountRepository.totalCountAccount(null, null, null);
 
         // then
         assertThat(count).isEqualTo(19);

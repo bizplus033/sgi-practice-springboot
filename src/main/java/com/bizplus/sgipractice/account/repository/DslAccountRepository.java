@@ -62,10 +62,11 @@ public class DslAccountRepository {
         return account.name.likeIgnoreCase("%" + condition + "%");
     }
 
-    public Long totalCountAccount() {
+    public Long totalCountAccount(String type, String code, String name) {
         return query
                 .select(account.count())
                 .from(account)
+                .where(toBooleanBuilder(type, code, name))
                 .fetchOne();
     }
 }
