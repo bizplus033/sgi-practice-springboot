@@ -29,14 +29,14 @@
                     </colgroup>
                     <thead>
                     <tr>
-                        <th>시스템 코드명</th>
+                        <th>시스템코드</th>
                         <th>코드명</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="systemCodeDetail : ${responseDto.systemCodeDetailResponses}">
-                        <td>[[${systemCodeDetail.systemCodeDetailName}]]</td>
                         <td>[[${systemCodeDetail.systemCodeName}]]</td>
+                        <td>[[${systemCodeDetail.systemCodeDetailName}]]</td>
                     </tr>
                     </tbody>
                 </table>

@@ -17,7 +17,7 @@ public class Account extends BaseTimeEntity {
 
     private String code;
 
-    private String type;                   // 거래처 유형
+    private String type;                   // 거래처 유형 : 매입거래처 or 매출거래처 or 매입/매출거래처
 
     private String name;
 
