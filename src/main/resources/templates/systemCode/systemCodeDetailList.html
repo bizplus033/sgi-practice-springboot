@@ -14,7 +14,7 @@
                         Total : [[${responseDto.total}]]건
                     </div>
                     <div>
-                        <button type="button" class="btn btn-primary popup" href="/systemCode/create">
+                        <button type="button" class="btn btn-primary popup" th:href="@{/systemCode/create}">
                             <i class="fa fa-pencil" aria-hidden="true"></i>
                             등록하기
                         </button>
@@ -47,3 +47,27 @@
 </div>
 </body>
 </html>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.popup').colorbox({
+            transition: "elastic",
+            speed: 150,
+            opacity: 0.6,
+            iframe: true,
+            width: "600px",
+            height: "220px",
+            onClosed: function () {
+                window.location.reload();
+            }
+        });
+    });
+
+    function closePopup() {
+        $('.popup').colorbox.close();
+
+        setTimeout(function () {
+            window.location.reload();
+        }, 160);
+    }
+</script>
