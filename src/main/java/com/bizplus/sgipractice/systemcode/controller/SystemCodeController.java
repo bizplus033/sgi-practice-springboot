@@ -1,4 +1,4 @@
-package com.bizplus.sgipractice.systemcode;
+package com.bizplus.sgipractice.systemcode.controller;
 
 import com.bizplus.sgipractice.global.util.NavigationUtil;
 import com.bizplus.sgipractice.systemcode.dto.ResponseDto;
