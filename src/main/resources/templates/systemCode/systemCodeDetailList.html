@@ -1,0 +1,73 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="../static/layout/top.html">
+</head>
+<body>
+<div class="wrapper">
+    <th:block th:include="../static/layout/sidebar.html" th:with="active=${activeValue}"/>
+    <div class="container">
+        <div id="content">
+            <th:block th:include="../static/layout/content-header.html"/>
+
+            <div class="box box-bg">
+                <div class="flex-content-between mb-1">
+                    <div class="ft-bold">
+                        Total : [[${responseDto.total}]]건
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-primary popup" th:href="@{/systemCode/create}">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                            등록하기
+                        </button>
+                    </div>
+
+                </div>
+
+                <table class="table-list full" style="text-align: center">
+                    <colgroup>
+                        <col width="*">
+                        <col width="*">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th>시스템 코드명</th>
+                        <th>코드명</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="systemCodeDetail : ${responseDto.systemCodeDetailResponses}">
+                        <td>[[${systemCodeDetail.systemCodeDetailName}]]</td>
+                        <td>[[${systemCodeDetail.systemCodeName}]]</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.popup').colorbox({
+            transition: "elastic",
+            speed: 150,
+            opacity: 0.6,
+            iframe: true,
+            width: "600px",
+            height: "220px",
+            onClosed: function () {
+                window.opener.location.reload();
+            }
+        });
+    });
+
+    function closePopup() {
+        $('.popup').colorbox.close();
+
+        setTimeout(function () {
+            window.location.reload();
+        }, 160);
+    }
+</script>

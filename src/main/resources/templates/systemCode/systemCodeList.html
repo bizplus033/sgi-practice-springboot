@@ -1,0 +1,34 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="../static/layout/top.html">
+</head>
+<body>
+<div class="wrapper">
+    <th:block th:include="../static/layout/sidebar.html" th:with="active=${activeValue}"/>
+    <div class="container">
+        <div id="content">
+            <th:block th:include="../static/layout/content-header.html"/>
+            <div class="box box-bg">
+                <div class="ft-bold">
+                    Total : [[${systemCodeResponseDto.count}]]건
+                </div>
+                <table class="table-list full" style="text-align: center">
+                    <colgroup>
+                        <col width="*">
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th>시스템 코드명</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="systemCode : ${systemCodeResponseDto.systemCodes}">
+                        <td>[[${systemCode.codeName}]]</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
