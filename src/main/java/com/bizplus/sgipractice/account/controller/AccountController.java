@@ -2,6 +2,7 @@ package com.bizplus.sgipractice.account.controller;
 
 import com.bizplus.sgipractice.account.dto.AccountSearchFormDto;
 import com.bizplus.sgipractice.account.dto.AccountWithTotalCountResponse;
+import com.bizplus.sgipractice.account.dto.CreateAccountRequest;
 import com.bizplus.sgipractice.account.service.AccountService;
 import com.bizplus.sgipractice.global.util.NavigationUtil;
 import lombok.RequiredArgsConstructor;
@@ -34,5 +35,14 @@ public class AccountController {
         model.addAttribute("searchFormDto", searchFormDto);
         model.addAttribute("accountList", accountList);
         return "account/accountList";
+    }
+
+    /**
+     * 생성
+     */
+    @GetMapping("/list/create")
+    public String createAccount(CreateAccountRequest request) {
+        accountService.createAccount(request);
+        return null;
     }
 }
