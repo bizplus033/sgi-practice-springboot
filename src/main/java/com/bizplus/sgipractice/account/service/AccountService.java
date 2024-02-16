@@ -36,6 +36,8 @@ public class AccountService {
 
     @Transactional
     public void createAccount(CreateAccountRequest request) {
-        jpaAccountRepository.save(modelMapper.map(request, Account.class));
+        Account entity = request.toEntity();
+        log.info("account = {}", entity);
+        jpaAccountRepository.save(entity);
     }
 }
