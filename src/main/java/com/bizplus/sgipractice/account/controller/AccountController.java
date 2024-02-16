@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,9 +41,11 @@ public class AccountController {
     /**
      * 생성
      */
-    @GetMapping("/list/create")
-    public String createAccount(CreateAccountRequest request) {
-        accountService.createAccount(request);
-        return null;
+    @GetMapping("/create")
+    public String createAccountForm(Model model) {
+        navigationList = NavigationUtil.setNavigation("거래처관리", "거래처정보등록", "등록하기");
+
+        model.addAttribute("navigation", navigationList);
+        return "account/accountInputForm";
     }
 }
