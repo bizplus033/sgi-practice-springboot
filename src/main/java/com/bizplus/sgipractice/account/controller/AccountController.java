@@ -3,6 +3,7 @@ package com.bizplus.sgipractice.account.controller;
 import com.bizplus.sgipractice.account.dto.AccountSearchFormDto;
 import com.bizplus.sgipractice.account.dto.AccountWithTotalCountResponse;
 import com.bizplus.sgipractice.account.dto.CreateAccountRequest;
+import com.bizplus.sgipractice.account.dto.UpdateAccountRequest;
 import com.bizplus.sgipractice.account.entity.Account;
 import com.bizplus.sgipractice.account.service.AccountService;
 import com.bizplus.sgipractice.global.util.NavigationUtil;
@@ -11,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -66,5 +68,12 @@ public class AccountController {
 
 
         return "account/accountUpdateForm";
+    }
+
+    @PostMapping("/edit")
+    public String updateAccount(UpdateAccountRequest request, Model model, RedirectAttributes rttr) {
+        accountService.updateAccount(request);
+
+        return "redirect:/account/list";
     }
 }

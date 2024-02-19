@@ -32,7 +32,7 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.modelmapper:modelmapper:3.1.1'
-	implementation 'com.fasterxml.jackson.core:jackson-databind:2.11.0'
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.16.0'
 
 	// queryDSL 설정
 	implementation "com.querydsl:querydsl-jpa"

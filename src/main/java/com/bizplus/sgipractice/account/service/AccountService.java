@@ -1,9 +1,6 @@
 package com.bizplus.sgipractice.account.service;
 
-import com.bizplus.sgipractice.account.dto.AccountResponse;
-import com.bizplus.sgipractice.account.dto.AccountSearchFormDto;
-import com.bizplus.sgipractice.account.dto.AccountWithTotalCountResponse;
-import com.bizplus.sgipractice.account.dto.CreateAccountRequest;
+import com.bizplus.sgipractice.account.dto.*;
 import com.bizplus.sgipractice.account.entity.Account;
 import com.bizplus.sgipractice.account.repository.DslAccountRepository;
 import com.bizplus.sgipractice.account.repository.JpaAccountRepository;
@@ -44,5 +41,13 @@ public class AccountService {
 
     public Account getAccount(Long id) {
         return jpaAccountRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+    }
+
+    @Transactional
+    public void updateAccount(UpdateAccountRequest request) {
+        Account account = jpaAccountRepository.findById(request.getId())
+                .orElseThrow(EntityNotFoundException::new);
+
+        modelMapper.map(request,account);
     }
 }

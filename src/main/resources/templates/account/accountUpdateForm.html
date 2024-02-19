@@ -11,6 +11,7 @@
             <div class="box box-bg">
                 <th:block th:with="action=${'/account/edit'}"/>
                     <form id="inputForm" name="inputForm" method="POST" th:action="@{${action}}">
+                        <input type="hidden" name="id" th:value="${account.id}">
                         <table class="table-input xs">
                             <colgroup>
                                 <col width="150px">

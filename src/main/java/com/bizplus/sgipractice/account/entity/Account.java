@@ -1,5 +1,6 @@
 package com.bizplus.sgipractice.account.entity;
 
+import com.bizplus.sgipractice.account.dto.UpdateAccountRequest;
 import com.bizplus.sgipractice.common.domain.BaseTimeEntity;
 import lombok.*;
 
@@ -8,6 +9,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "account")
 @Getter
+@Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 public class Account extends BaseTimeEntity {
