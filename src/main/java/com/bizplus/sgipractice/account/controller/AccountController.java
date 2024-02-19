@@ -3,6 +3,7 @@ package com.bizplus.sgipractice.account.controller;
 import com.bizplus.sgipractice.account.dto.AccountSearchFormDto;
 import com.bizplus.sgipractice.account.dto.AccountWithTotalCountResponse;
 import com.bizplus.sgipractice.account.dto.CreateAccountRequest;
+import com.bizplus.sgipractice.account.entity.Account;
 import com.bizplus.sgipractice.account.service.AccountService;
 import com.bizplus.sgipractice.global.util.NavigationUtil;
 import lombok.RequiredArgsConstructor;
@@ -52,5 +53,18 @@ public class AccountController {
     public String create(CreateAccountRequest request) {
         accountService.createAccount(request);
         return "redirect:/account/list";
+    }
+
+    @GetMapping("/edit")
+    public String updateAccountForm(@RequestParam(required = false) Long id,
+                                    Model model) {
+        navigationList = NavigationUtil.setNavigation("거래처 관리", "거래처 정보", "거래처 정보 상세보기");
+        Account account = accountService.getAccount(id);
+
+        model.addAttribute("navigation", navigationList);
+        model.addAttribute("account", account);
+
+
+        return "account/accountUpdateForm";
     }
 }

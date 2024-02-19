@@ -13,6 +13,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @Service
@@ -39,5 +40,9 @@ public class AccountService {
         Account entity = request.toEntity();
         log.info("account = {}", entity);
         jpaAccountRepository.save(entity);
+    }
+
+    public Account getAccount(Long id) {
+        return jpaAccountRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 }
