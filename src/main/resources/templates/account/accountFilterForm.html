@@ -1,4 +1,4 @@
-<form method="GET" action="/account/list" th:object="${searchFormDto}">
+<form method="GET" action="/account/list" id="searchForm" th:object="${searchFormDto}">
     <table class="table-input">
         <colgroup>
             <col width="10%">
@@ -47,9 +47,29 @@
                 <i class="fa fa-trash-o" aria-hidden="true"> 삭제하기</i>
             </button>
             <button type="button" class="btn btn-success"
-                    th:onclick="|location.href='/accountExcel'|">
+                    th:onclick="downloadExcel()">
                 <i class="fa fa-file-excel-o" aria-hidden="true"> Excel 다운로드</i>
             </button>
         </div>
     </div>
 </form>
+
+<script type="text/javascript">
+    function downloadExcel() {
+
+        var form = document.getElementById('searchForm');
+
+        var formData = new FormData(form);
+
+        var url = '/accountExcel?';
+
+        for (var pair of formData.entries()) {
+            url += pair[0] + '=' + pair[1] + '&';
+        }
+
+        url = url.slice(0, -1);
+
+        window.location.href = url;
+    }
+</script>
+

@@ -25,4 +25,15 @@ public class AccountResponse {
         this.ceo = ceo;
         this.etc = etc;
     }
+
+    public AccountExcelDto toAccountExcelDto() {
+        return AccountExcelDto.builder()
+                .code(code)
+                .name(name)
+                .type(type)
+                .businessNumber(businessNumber)
+                .ceo(ceo)
+                .etc(etc)
+                .build();
+    }
 }
