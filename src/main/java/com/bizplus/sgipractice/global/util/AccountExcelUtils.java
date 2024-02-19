@@ -7,7 +7,6 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
@@ -21,7 +20,7 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Component
-public  class ExcelUtils {
+public class AccountExcelUtils {
     public void excelDownload(List<AccountExcelDto> data, HttpServletResponse response){
         Workbook workbook = new XSSFWorkbook();
 

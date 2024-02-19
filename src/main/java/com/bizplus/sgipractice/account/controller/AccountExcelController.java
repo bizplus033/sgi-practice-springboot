@@ -3,9 +3,8 @@ package com.bizplus.sgipractice.account.controller;
 import com.bizplus.sgipractice.account.dto.AccountExcelDto;
 import com.bizplus.sgipractice.account.dto.AccountResponse;
 import com.bizplus.sgipractice.account.dto.AccountSearchFormDto;
-import com.bizplus.sgipractice.account.dto.AccountWithTotalCountResponse;
 import com.bizplus.sgipractice.account.service.AccountService;
-import com.bizplus.sgipractice.global.util.ExcelUtils;
+import com.bizplus.sgipractice.global.util.AccountExcelUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -20,7 +19,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class AccountExcelController {
     private final AccountService accountService;
-    private final ExcelUtils excelUtils;
+    private final AccountExcelUtils excelUtils;
 
     @GetMapping("/accountExcel")
     public void excelDownload(HttpServletResponse response, AccountSearchFormDto searchFormDto) {
