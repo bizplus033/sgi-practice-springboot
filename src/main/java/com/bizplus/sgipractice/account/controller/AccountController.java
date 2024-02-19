@@ -76,4 +76,5 @@ public class AccountController {
 
         return "redirect:/account/list";
     }
+
 }
